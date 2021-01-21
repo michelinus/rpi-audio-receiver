@@ -16,7 +16,7 @@ Devices like phones, tablets and computers can play audio via this receiver.
 
 The installation script asks whether to install each component.
 
-    wget -q https://github.com/nicokaiser/rpi-audio-receiver/archive/main.zip
+    wget -q https://github.com/michelinus/rpi-audio-receiver/archive/main.zip
     unzip main.zip
     rm main.zip
 
