@@ -96,6 +96,8 @@ action=$(expr "$ACTION" : "\([a-zA-Z]\+\).*")
 
 if [ "$action" = "add" ]; then
     bluetoothctl discoverable off
+    # disconnect wifi to prevent dropouts
+    ifconfig wlan0 down &
     if [ -f /usr/local/share/sounds/__custom/device-added.wav ]; then
         aplay -q /usr/local/share/sounds/__custom/device-added.wav
     fi
@@ -105,6 +107,8 @@ if [ "$action" = "remove" ]; then
     if [ -f /usr/local/share/sounds/__custom/device-removed.wav ]; then
         aplay -q /usr/local/share/sounds/__custom/device-removed.wav
     fi
+    # reenable wifi
+    ifconfig wlan0 up &
     bluetoothctl discoverable on
 fi
 EOF
